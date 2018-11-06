@@ -19,6 +19,7 @@ def make_app():
 
 class Handler(tornado.web.RequestHandler):
     def get(self):
+        self.data_received(25)
         self.write('Hi, username...\nAccess allowed. Welcome!')
 
 
