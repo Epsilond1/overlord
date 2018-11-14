@@ -9,7 +9,6 @@ import tornado.ioloop
 import tornado.web
 
 from storagedata import StorageData
-from configurator import ConfStorage
 from logging2 import Logger
 
 logger = Logger('server')

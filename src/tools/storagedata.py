@@ -5,13 +5,12 @@ FIXME
 """
 
 import json
-from datetime import datetime
-from time_tool import time_difference
+import time
 from logging2 import Logger
 
 logger = Logger('server')
 
-CONFFILE = '/home/epsilond1/a.json'
+CONFFILE = '/etc/overlord/a.json'
 
 def _read_file():
     with open(CONFFILE) as cf:
@@ -19,7 +18,8 @@ def _read_file():
     return confdata
 
 def _get_current_time() -> int:
-    return datetime.now().second
+    return int(time.time())
+
 
 class StorageData:
     def __init__(self):
@@ -27,6 +27,14 @@ class StorageData:
         self._confdata = _read_file()
 
     def callback(self):
+        current_time = _get_current_time()
+
+        logger.info('current time={}, time of cache live={}, difference={}'.format(
+            current_time,
+            self._start_time,
+            current_time - self._start_time
+        ))
+
         if _get_current_time() - self._start_time > 10:
             logger.info('cache update!')
             self._confdata = _read_file()
