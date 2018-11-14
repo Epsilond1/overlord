@@ -1,4 +1,4 @@
-server:
-  server_port: 9090
-  ssl_pub: ~/.ssh/id_rsa.pub
-  ssl_secret: ~/.ssh/id_rsa
+server_port: 9090
+ssl_pub: ~/.ssh/id_rsa.pub
+ssl_secret: ~/.ssh/id_rsa
+cachettl: 8
